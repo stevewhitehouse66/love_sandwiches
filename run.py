@@ -20,7 +20,23 @@ def get_sales_data():
     print('Data should be six numbers seperated by commas')
     print('Example: 10,20,30,40,50,60\n')
     data_str = input('Enter your data here: ')
+    sales_data = data_str.split(',')
+    validate_data(sales_data) #call validate_data function
 
-    print( f'The data provided is: {data_str}')
+
+def validate_data(values):
+    """
+    Inside try converts to integers
+    Raisies ValueError if stings cant be convertered
+    or if there arent 6 values.
+    """
+    try:
+        if len(values) != 6:
+            raise ValueError(f'Exactly 6 values rquired, you provided {len(values)}'
+            )
+    except ValueError as e:
+        print(f'Invalid Data: {e}, please try again.\n')
+
+    print(values)
 
 get_sales_data()
