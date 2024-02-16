@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
+
 
 
 SCOPE = [
@@ -27,8 +27,9 @@ def get_sales_data():
         sales_data = data_str.split(',')
         
         if validate_data(sales_data):
-            print("data is valid")
+            print("Data is valid")
             break
+        
     return sales_data
 
 
@@ -66,7 +67,7 @@ def calculate_surplus_data(sales_row):
     - positive result indicates waste
     - negative result rquals extras made
     """
-    print('Calculating surplus data... \n')
+    print('Calculating surplus data...\n')
     stock = SHEET.worksheet('stock').get_all_values()
     stock_row = stock[-1]
 
@@ -101,6 +102,7 @@ def calculate_stock_data(data):
         new_stock_data.append(round(stock_num))
 
     return new_stock_data
+
 
 def main():
     """
